@@ -1,7 +1,7 @@
 resource "google_artifact_registry_repository" "spotmusic-repo" {
   provider = google-beta
 
-  location = "us-west1"
+  location = "us-central1"
   repository_id = "hackaton-infra"
   description = "Imagens Docker"
   format = "DOCKER"
