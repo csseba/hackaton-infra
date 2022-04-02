@@ -25,7 +25,7 @@ resource "google_sql_database_instance" "instance" {
 
 resource "google_sql_user" "users" {
   name = "root"
-  instance = "${google_sql_database_instance.master.name}"
+  instance = google_sql_database_instance.instance.name
   host = "%"
   password = "spotmusic"
 }
