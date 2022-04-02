@@ -5,9 +5,9 @@ resource "google_artifact_registry_repository" "spotmusic-repo" {
   repository_id = "hackaton-infra"
   description = "Imagens Docker"
   format = "DOCKER"
-} 
+}
 
-resource "google_sql_database_instance" "master” {
+resource "google_sql_database_instance" "master" {
   name = "spot_music_instance"
   database_version = "MYSQL_8_0"
   location_id = "us-central"
