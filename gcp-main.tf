@@ -7,25 +7,25 @@ resource "google_artifact_registry_repository" "spotmusic-repo" {
   format = "DOCKER"
 }
 
-resource "google_sql_database_instance" "master" {
-  name = "spot_music_instance"
-  database_version = "MYSQL_8_0"
-  region = "us-west1"
-  settings {
-    tier = "db-n1-standard-2"
-  }
+resource "google_sql_database" "database" {
+  name     = "my-spotmusic-db"
+  instance = google_sql_database_instance.instance.name
 }
 
-resource "google_sql_database" "database" {
-  name = "spot_music_db"
-  instance = "spot_music_instance"
-  charset = "utf8"
-  collation = "utf8_general_ci"
+resource "google_sql_database_instance" "instance" {
+  name             = "my-spotmusic-instance"
+  region           = "us-central1"
+  database_version = "MYSQL_8_0"
+  settings {
+    tier = "db-f1-micro"
+  }
+
+  deletion_protection  = "true"
 }
 
 resource "google_sql_user" "users" {
   name = "root"
-  instance = "spot_music_instance"
+  instance = "${google_sql_database_instance.master.name}"
   host = "%"
   password = "spotmusic"
 }
