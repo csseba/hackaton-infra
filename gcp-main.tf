@@ -7,7 +7,7 @@ resource "google_artifact_registry_repository" "spotmusic-repo" {
   format = "DOCKER"
 } 
 
-resource “google_sql_database_instance” “master” {
+resource "google_sql_database_instance" "master” {
   name = "spot_music_instance"
   database_version = "MYSQL_8_0"
   location_id = "us-central"
@@ -16,7 +16,7 @@ resource “google_sql_database_instance” “master” {
   }
 }
 
-resource "google_sql_database" “database” {
+resource "google_sql_database" "database" {
   name = "spot_music_db"
   instance = "spot_music_instance"
   charset = "utf8"
