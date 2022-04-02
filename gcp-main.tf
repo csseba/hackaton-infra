@@ -1,7 +1,7 @@
 resource "google_artifact_registry_repository" "spotmusic-repo" {
   provider = google-beta
 
-  location = "us-central1"
+  location = "us-west1"
   repository_id = "hackaton-infra"
   description = "Imagens Docker"
   format = "DOCKER"
@@ -10,7 +10,7 @@ resource "google_artifact_registry_repository" "spotmusic-repo" {
 resource "google_sql_database_instance" "master" {
   name = "spot_music_instance"
   database_version = "MYSQL_8_0"
-  location_id = "us-central"
+  location = "us-west1"
   settings {
     tier = "db-n1-standard-2"
   }
